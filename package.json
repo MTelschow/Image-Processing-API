@@ -1,0 +1,24 @@
+{
+  "name": "image-processing-api",
+  "version": "1.0.0",
+  "description": "An api that can be used in two ways to get placeholders for resized images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MTelschow/Image-Processing-API.git"
+  },
+  "keywords": [
+    "udacity",
+    "fullstack",
+    "nanodegree"
+  ],
+  "author": "Mathis Telschow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MTelschow/Image-Processing-API/issues"
+  },
+  "homepage": "https://github.com/MTelschow/Image-Processing-API#readme"
+}
