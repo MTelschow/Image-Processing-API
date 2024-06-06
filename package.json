@@ -6,10 +6,11 @@
   "scripts": {
     "lint": "eslint 'src/**/**.ts'",
     "format": "prettier --write \"src/**/*.ts\"",
+    "start": "nodemon src/index.ts",
+    "build": "npx tsc",
     "jasmine": "jasmine",
     "test": "npm run build && npm run jasmine",
-    "build": "npx tsc",
-    "start": "nodemon src/index.ts"
+    "serve": "node build/."
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "@types/express": "^4.17.21",
     "@types/jasmine": "^5.1.4",
     "@types/node": "^20.12.12",
+    "@types/resize-img": "^2.0.3",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -44,6 +46,7 @@
   "dependencies": {
     "express": "^4.19.2",
     "jasmine": "^5.1.0",
-    "jasmine-spec-reporter": "^7.0.0"
+    "jasmine-spec-reporter": "^7.0.0",
+    "resize-img": "^1.1.2"
   }
 }
