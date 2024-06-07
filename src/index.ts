@@ -1,6 +1,23 @@
-import add from './add/add';
-const result: number = add(2, 4);
+import express from 'express';
+import resizeTargetImage from './utils/covert';
 
-console.log(result);
+const app = express();
 
-export default result;
+app.get('/api/images', (req, res) => {
+  const query = req.query;
+  const filename = query.filename as string;
+  const width = query.width as unknown as number;
+  const height = query.height as unknown as number;
+  if (filename && height && width) {
+    resizeTargetImage(filename, width, height);
+  }
+
+  res.status(200);
+  res.send();
+});
+
+const port = 3000;
+
+app.listen(port, () => {
+  console.log(`server started at localhost:${port}`);
+});
