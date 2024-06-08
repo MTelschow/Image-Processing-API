@@ -11,9 +11,14 @@ const getFullImageDirectory = (): string => {
   return path.join(getBaseDirectoryPath(), '/assets/full/');
 };
 
-// Get path to thumb images
+// Get path to thumb images and create it if not there
 const getThumbImageDirectory = (): string => {
-  return path.join(getBaseDirectoryPath(), '/assets/thumb/');
+  const thumbPath = path.join(getBaseDirectoryPath(), '/assets/thumb/');
+  // Create path if it doesn't exist
+  if (!fs.existsSync(thumbPath)) {
+    fs.mkdirSync(thumbPath);
+  }
+  return thumbPath;
 };
 
 // Get path to specific full image
