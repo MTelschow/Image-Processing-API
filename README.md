@@ -30,13 +30,45 @@ npm install
 3. Start the server:
 
 ```
-npm start
+npm run start
 ```
 
 4. Access the API:
 
 ```
 http://localhost:3000
+```
+
+## All scripts
+
+- Start the server:
+
+```
+npm run start
+```
+
+- Build the project:
+
+```
+npm run build
+```
+
+- Run tests:
+
+```
+npm run test
+```
+
+- Start lint:
+
+```
+npm run lint
+```
+
+- Run formatting:
+
+```
+npm run format
 ```
 
 ## Usage
