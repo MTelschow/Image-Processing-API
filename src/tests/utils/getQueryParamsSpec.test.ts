@@ -1,6 +1,5 @@
 import getQueryParams from '../../utils/getQueryParams';
-import defaultValues from '../../utils/defaultValues';
-const { DEFAULT_FILENAME, DEFAULT_FORMAT } = defaultValues;
+import { DEFAULT_FILENAME, DEFAULT_FORMAT } from '../../utils/defaultValues';
 
 describe('GetQueryParams Suite', () => {
   it('should return a default object when there are no query parameters', () => {

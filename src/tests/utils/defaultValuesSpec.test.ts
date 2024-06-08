@@ -1,7 +1,9 @@
-import defaultValues from '../../utils/defaultValues';
-
-const { DEFAULT_FILENAME, DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_FORMAT } =
-  defaultValues;
+import {
+  DEFAULT_FILENAME,
+  DEFAULT_WIDTH,
+  DEFAULT_HEIGHT,
+  DEFAULT_FORMAT,
+} from '../../utils/defaultValues';
 
 describe('defaultValues suite', () => {
   it('default filename should be a string', () => {
