@@ -41,3 +41,5 @@ app.get('/api/images', async (req, res) => {
 app.listen(port, () => {
   console.log(`server started at localhost:${port}`);
 });
+
+export default app;
