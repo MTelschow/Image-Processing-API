@@ -1,22 +1,23 @@
 import path from 'path';
 import fs from 'fs';
 
-// Get directory paths
+// Get base directory paths
 const getBaseDirectoryPath = (): string => {
-  // Used to make path
   return path.join(__dirname, '../../');
 };
 
+// Get path to full images
 const getFullImageDirectory = (): string => {
   return path.join(getBaseDirectoryPath(), '/assets/full/');
 };
 
+// Get path to thumb images
 const getThumbImageDirectory = (): string => {
   return path.join(getBaseDirectoryPath(), '/assets/thumb/');
 };
 
-// Get path to specific pictures
-const getFullPicturePath = (
+// Get path to specific full image
+const getFullImagePath = (
   filename: string,
   format: string = 'jpg',
 ): string => {
@@ -24,6 +25,7 @@ const getFullPicturePath = (
   return path.join(getFullImageDirectory(), fullFilename);
 };
 
+// Get path to specific thumb image
 const getThumbPath = (
   filename: string,
   width: number,
@@ -35,8 +37,8 @@ const getThumbPath = (
   return path.join(getThumbImageDirectory(), thumbFilename);
 };
 
-// Check if full picture exist
-const fullPictureExists = (
+// Check if full image exist
+const fullImageExists = (
   filename: string,
   format: string = 'jpg',
 ): boolean => {
@@ -45,7 +47,7 @@ const fullPictureExists = (
   return fs.existsSync(filePath);
 };
 
-// Check if specific thumb exists
+// Check if specific thumb image exists
 const thumbExists = (
   filename: string,
   width: number,
@@ -59,8 +61,8 @@ export default {
   getBaseDirectoryPath,
   getFullImageDirectory,
   getThumbImageDirectory,
-  fullPictureExists,
+  fullPictureExists: fullImageExists,
   getThumbPath,
-  getFullPicturePath,
+  getFullPicturePath: getFullImagePath,
   thumbExists,
 };
