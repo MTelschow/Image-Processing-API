@@ -1,22 +1,44 @@
 import express from 'express';
+import getQueryParams from './utils/getQueryParams';
 import resizeTargetImage from './utils/covert';
+import fileSystemUtils from './utils/fileSystemUtils';
+
+const { fullPictureExists } = fileSystemUtils;
 
 const app = express();
+const port = 3000;
 
-app.get('/api/images', (req, res) => {
+app.get('/api/images', async (req, res) => {
   const query = req.query;
-  const filename = query.filename as string;
-  const width = query.width as unknown as number;
-  const height = query.height as unknown as number;
-  if (filename && height && width) {
-    resizeTargetImage(filename, width, height);
+  const { filename, width, height, format } = getQueryParams(query);
+
+  // Send 404 if no filename given
+  if (filename == '') {
+    res.status(404).send('No file name provided');
+    return;
+  }
+
+  // Send 404 if file not found
+  if (!fullPictureExists(filename, format)) {
+    res.status(404).send('File does not exist');
+    return;
+  }
+  const convertedImage = await resizeTargetImage(
+    filename,
+    width,
+    height,
+    format,
+  );
+
+  // Handle if conversion failed
+  if (convertedImage == '') {
+    res.status(500).send('Conversion failed');
+    return;
   }
 
   res.status(200);
-  res.send();
+  res.sendFile(convertedImage);
 });
-
-const port = 3000;
 
 app.listen(port, () => {
   console.log(`server started at localhost:${port}`);
