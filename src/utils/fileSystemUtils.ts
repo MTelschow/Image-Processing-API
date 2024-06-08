@@ -18,7 +18,7 @@ const getThumbImageDirectory = (): string => {
 // Get path to specific pictures
 const getFullPicturePath = (
   filename: string,
-  format: string = 'jpeg',
+  format: string = 'jpg',
 ): string => {
   const fullFilename = filename + '.' + format;
   return path.join(getFullImageDirectory(), fullFilename);
@@ -28,7 +28,7 @@ const getThumbPath = (
   filename: string,
   width: number,
   height: number,
-  format: string = 'jpeg',
+  format: string = 'jpg',
 ): string => {
   const thumbFilename =
     filename + '-' + String(width) + 'x' + String(height) + '.' + format;
@@ -38,7 +38,7 @@ const getThumbPath = (
 // Check if full picture exist
 const fullPictureExists = (
   filename: string,
-  format: string = 'jpeg',
+  format: string = 'jpg',
 ): boolean => {
   const fullFilename = filename + '.' + format;
   const filePath = path.join(getFullImageDirectory(), fullFilename);
@@ -50,7 +50,7 @@ const thumbExists = (
   filename: string,
   width: number,
   height: number,
-  format: string = 'jpeg',
+  format: string = 'jpg',
 ): boolean => {
   return fs.existsSync(getThumbPath(filename, width, height, format));
 };
