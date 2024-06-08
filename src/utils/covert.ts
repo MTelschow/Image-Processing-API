@@ -33,17 +33,21 @@ const resizeTargetImage = async (
   // Skip process if file has already been created
   if (thumbExists(filename, width, height, format)) return resizedImagePath;
 
-  // Resize image
-  const resizedImage = await convertImage(filename, width, height, format);
+  // Try to resize image
+  try {
+    // Resize image
+    const resizedImage = await convertImage(filename, width, height, format);
 
-  // Handle conversion error
-  if (resizedImage == undefined) return '';
+    // Write file to fs
+    fs.writeFileSync(resizedImagePath, resizedImage);
 
-  // Write file to fs
-  fs.writeFileSync(resizedImagePath, resizedImage);
-
-  // Return file path
-  return thumbExists(filename, width, height, format) ? resizedImagePath : '';
+    // Return file path
+    return thumbExists(filename, width, height, format) ? resizedImagePath : '';
+  } catch (error) {
+    // Handle conversion error
+    console.error('Error converting image:', error);
+    return '';
+  }
 };
 
 // Function to do conversion step
@@ -52,7 +56,7 @@ const convertImage = async (
   width: number,
   height: number,
   format: string,
-): Promise<Buffer | undefined> => {
+): Promise<Buffer> => {
   // Get filepath
   const fullPicturePath = getFullPicturePath(filename, format);
 
@@ -69,19 +73,12 @@ const convertImage = async (
     resizeImgArgs.height = height;
   }
   // Try Conversion
-  try {
-    console.log(`resizeImg(fs.readFileSync(${fullPicturePath}, ${resizeImgArgs});`)
-    const resizedImage = await resizeImg(
-      fs.readFileSync(fullPicturePath),
-      resizeImgArgs,
-    );
+  const resizedImage = await resizeImg(
+    fs.readFileSync(fullPicturePath),
+    resizeImgArgs,
+  );
 
-    return resizedImage;
-  } catch (error) {
-    // Handle fail in conversion step
-    return undefined;
-  }
-
+  return resizedImage;
 };
 
 export default resizeTargetImage;
