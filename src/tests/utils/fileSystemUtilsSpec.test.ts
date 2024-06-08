@@ -12,7 +12,7 @@ const {
   thumbExists,
 } = fileSystemUtils;
 
-describe('File System Utils Suite', () => {
+describe('fileSystemUtils Suite', () => {
   describe('getBaseDirectoryPath', () => {
     it('should return a valid path', () => {
       const utilsPath = getBaseDirectoryPath();

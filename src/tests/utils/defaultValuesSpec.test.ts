@@ -3,7 +3,7 @@ import defaultValues from '../../utils/defaultValues';
 const { DEFAULT_FILENAME, DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_FORMAT } =
   defaultValues;
 
-describe('Default Values suite', () => {
+describe('defaultValues suite', () => {
   it('default filename should be a string', () => {
     expect(DEFAULT_FILENAME).toBeInstanceOf(String);
   });
