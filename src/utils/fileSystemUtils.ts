@@ -56,12 +56,12 @@ const thumbExists = (
   return fs.existsSync(getThumbPath(filename, width, height, format));
 };
 
-export default {
+export {
   getBaseDirectoryPath,
   getFullImageDirectory,
   getThumbImageDirectory,
-  fullPictureExists: fullImageExists,
+  fullImageExists,
   getThumbPath,
-  getFullPicturePath: getFullImagePath,
+  getFullImagePath,
   thumbExists,
 };

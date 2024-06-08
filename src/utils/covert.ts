@@ -1,16 +1,17 @@
 import fs from 'fs';
 import resizeImg, { Formats } from 'resize-img';
-import fileSystemUtils from './fileSystemUtils';
+import {
+  fullImageExists,
+  getFullImagePath,
+  thumbExists,
+  getThumbPath,
+} from './fileSystemUtils';
 
 interface ResizeImgArgs {
   width?: number;
   height?: number;
   format: Formats;
 }
-
-// Destructor fileSystemUtils functions
-const { fullPictureExists, thumbExists, getFullPicturePath, getThumbPath } =
-  fileSystemUtils;
 
 // Method to handle conversion with
 const resizeTargetImage = async (
@@ -20,11 +21,11 @@ const resizeTargetImage = async (
   format: string,
 ): Promise<string> => {
   // Handle file not findable
-  if (!fullPictureExists(filename, format)) return '';
+  if (!fullImageExists(filename, format)) return '';
 
   // If no height or width specified return full image
   if (Number.isNaN(width) && Number.isNaN(height)) {
-    return getFullPicturePath(filename, format);
+    return getFullImagePath(filename, format);
   }
 
   // Create target path
@@ -58,7 +59,7 @@ const convertImage = async (
   format: string,
 ): Promise<Buffer> => {
   // Get filepath
-  const fullPicturePath = getFullPicturePath(filename, format);
+  const fullPicturePath = getFullImagePath(filename, format);
 
   // Create args variable for resizeImg()
   const resizeImgArgs: ResizeImgArgs = {
@@ -81,4 +82,4 @@ const convertImage = async (
   return resizedImage;
 };
 
-export default resizeTargetImage;
+export { resizeTargetImage, convertImage };

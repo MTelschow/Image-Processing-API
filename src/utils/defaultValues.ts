@@ -6,7 +6,7 @@ const DEFAULT_WIDTH: number = 200;
 const DEFAULT_HEIGHT: number = 200;
 const DEFAULT_FORMAT: Formats = 'jpg' as Formats;
 
-export default {
+export {
   DEFAULT_FILENAME,
   DEFAULT_WIDTH,
   DEFAULT_HEIGHT,

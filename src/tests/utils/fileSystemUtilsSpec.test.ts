@@ -1,16 +1,14 @@
-import fileSystemUtils from '../../utils/fileSystemUtils';
-import fs from 'fs';
-import path from 'path';
-
-const {
+import {
   getBaseDirectoryPath,
   getFullImageDirectory,
   getThumbImageDirectory,
-  fullPictureExists,
+  fullImageExists,
   getThumbPath,
-  getFullPicturePath,
+  getFullImagePath,
   thumbExists,
-} = fileSystemUtils;
+} from '../../utils/fileSystemUtils';
+import fs from 'fs';
+import path from 'path';
 
 describe('fileSystemUtils Suite', () => {
   describe('getBaseDirectoryPath', () => {
@@ -81,13 +79,13 @@ describe('fileSystemUtils Suite', () => {
   describe('fullPictureExists', () => {
     it('should return true if the full picture file exists', () => {
       const filename = 'tiger';
-      const fullPicturePath = getFullPicturePath(filename);
-      expect(fullPictureExists(filename)).toBe(fs.existsSync(fullPicturePath));
+      const fullPicturePath = getFullImagePath(filename);
+      expect(fullImageExists(filename)).toBe(fs.existsSync(fullPicturePath));
     });
     it('should return false if the full picture file does not exist', () => {
       const filename = 'does_not_exist';
-      const fullPicturePath = getFullPicturePath(filename);
-      expect(fullPictureExists(filename)).toBe(fs.existsSync(fullPicturePath));
+      const fullPicturePath = getFullImagePath(filename);
+      expect(fullImageExists(filename)).toBe(fs.existsSync(fullPicturePath));
     });
   });
 
@@ -102,8 +100,8 @@ describe('fileSystemUtils Suite', () => {
   describe('thumbExists', () => {
     it('should return true if the thumb file exists', () => {
       const filename = 'tiger';
-      const fullPicturePath = getFullPicturePath(filename);
-      expect(fullPictureExists(filename)).toBe(fs.existsSync(fullPicturePath));
+      const fullPicturePath = getFullImagePath(filename);
+      expect(fullImageExists(filename)).toBe(fs.existsSync(fullPicturePath));
     });
     it('should return false if the thumb file does not exist', () => {
       const filename = 'does_not_exist';

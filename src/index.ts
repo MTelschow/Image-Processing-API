@@ -1,9 +1,7 @@
 import express from 'express';
 import getQueryParams from './utils/getQueryParams';
-import resizeTargetImage from './utils/covert';
-import fileSystemUtils from './utils/fileSystemUtils';
-
-const { fullPictureExists } = fileSystemUtils;
+import { resizeTargetImage } from './utils/covert';
+import { fullImageExists } from './utils/fileSystemUtils';
 
 const app = express();
 const port = 3000;
@@ -19,7 +17,7 @@ app.get('/api/images', async (req, res) => {
   }
 
   // Send 404 if file not found
-  if (!fullPictureExists(filename, format)) {
+  if (!fullImageExists(filename, format)) {
     res.status(404).send('File does not exist');
     return;
   }

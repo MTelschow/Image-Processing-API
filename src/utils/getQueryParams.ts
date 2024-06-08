@@ -1,5 +1,5 @@
 import { ParsedQs } from 'qs';
-import defaultValues from './defaultValues';
+import { DEFAULT_FILENAME, DEFAULT_FORMAT } from './defaultValues';
 
 interface RequestParams {
   filename: string;
@@ -7,9 +7,6 @@ interface RequestParams {
   height: number;
   format: string;
 }
-
-// Destructor the default values
-const { DEFAULT_FILENAME, DEFAULT_FORMAT } = defaultValues;
 
 // Sets every missing value to its default value
 const getQueryParams = (query: ParsedQs): RequestParams => {
