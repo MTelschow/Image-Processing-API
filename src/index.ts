@@ -1,5 +1,5 @@
 import express from 'express';
-import getQueryParams from './utils/getQueryParams';
+import { getQueryParams, validateQueryParams } from './utils/queryUtils';
 import { resizeTargetImage } from './utils/covert';
 import { fullImageExists } from './utils/fileSystemUtils';
 
@@ -8,19 +8,16 @@ const port = 3000;
 
 app.get('/api/images', async (req, res) => {
   const query = req.query;
+
+  // Send an error if Params are invalid
+  const invalidQueryReason = validateQueryParams(query);
+  if (invalidQueryReason !== '') {
+    res.status(404).send(invalidQueryReason);
+    return;
+  }
+
   const { filename, width, height, format } = getQueryParams(query);
 
-  // Send 404 if no filename given
-  if (filename == '') {
-    res.status(404).send('No file name provided');
-    return;
-  }
-
-  // Send 404 if file not found
-  if (!fullImageExists(filename, format)) {
-    res.status(404).send('File does not exist');
-    return;
-  }
   const convertedImage = await resizeTargetImage(
     filename,
     width,
