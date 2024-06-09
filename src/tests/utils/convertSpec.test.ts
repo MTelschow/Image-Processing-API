@@ -1,10 +1,5 @@
 import { resizeTargetImage, convertImage } from '../../utils/covert';
-import {
-  getFullImagePath,
-  getThumbPath,
-  thumbExists,
-} from '../../utils/fileSystemUtils';
-import fs from 'fs';
+import { getFullImagePath, getThumbPath } from '../../utils/fileSystemUtils';
 
 describe('convertImage suite', () => {
   describe('resizeTargetImage', () => {
