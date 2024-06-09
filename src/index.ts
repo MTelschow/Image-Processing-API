@@ -1,7 +1,6 @@
 import express from 'express';
 import { getQueryParams, validateQueryParams } from './utils/queryUtils';
 import { resizeTargetImage } from './utils/covert';
-import { fullImageExists } from './utils/fileSystemUtils';
 
 const app = express();
 const port = 3000;
