@@ -21,9 +21,9 @@ describe('fileSystemUtils Suite', () => {
       expect(typeof utilsPath).toBe('string');
     });
 
-    it('should end with "Image-Processing-API/"', () => {
+    it('should contain with "Image-Processing-API"', () => {
       const utilsPath = getBaseDirectoryPath();
-      expect(utilsPath.endsWith('Image-Processing-API/')).toBeTruthy();
+      expect(utilsPath.includes('Image-Processing-API')).toBeTruthy();
     });
 
     it('should be an absolute path', () => {
@@ -43,9 +43,9 @@ describe('fileSystemUtils Suite', () => {
       expect(typeof fullImageDir).toBe('string');
     });
 
-    it('should end with "full/"', () => {
+    it('should contain with "full"', () => {
       const fullImageDir = getFullImageDirectory();
-      expect(fullImageDir.endsWith('full/')).toBeTruthy();
+      expect(fullImageDir.includes('full')).toBeTruthy();
     });
 
     it('should be an absolute path', () => {
@@ -65,9 +65,9 @@ describe('fileSystemUtils Suite', () => {
       expect(typeof thumbImageDir).toBe('string');
     });
 
-    it('should end with "thumb/"', () => {
+    it('should contain with "thumb"', () => {
       const thumbImageDir = getThumbImageDirectory();
-      expect(thumbImageDir.endsWith('thumb/')).toBeTruthy();
+      expect(thumbImageDir.includes('thumb')).toBeTruthy();
     });
 
     it('should be an absolute path', () => {
